@@ -3,8 +3,10 @@ generator passwords
 
 Using:
 
-  in command line enter passgen -p 10 -lus
-  
+  in command line enter passgen 
+  ```r
+  -p 10 -lus
+  ```
   -p means password
   
   10 means numbers of symbols in password
