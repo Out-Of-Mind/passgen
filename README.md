@@ -11,7 +11,8 @@ Using:
   
   10 means numbers of symbols in password
   
-  -lus or -lu l = lower case, u = upper case, s = special symbols
+  -lus or -lu 
+  l = lower case, u = upper case, s = special symbols
   
   u cannot choose use numbers or not
   
