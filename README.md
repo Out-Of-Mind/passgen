@@ -3,9 +3,9 @@ generator passwords
 
 Using:
 
-  in command line enter passgen 
+  in command line enter
   ```r
-  -p 10 -lus
+  $ passgen -p 10 -lus
   ```
   -p means password
   
@@ -15,4 +15,4 @@ Using:
   
   u cannot choose use numbers or not
   
-  also u can use it just enter passgen in command line
+  also u can use it just enter ```r$ passgen``` in command line
