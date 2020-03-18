@@ -16,4 +16,7 @@ Using:
   u cannot choose use numbers or not
   
   also u can use it just enter 
-  ```r$ passgen``` in command line
+  ```r
+  $ passgen
+  ``` 
+  in command line
