@@ -52,7 +52,7 @@ else:
 	except:
 		print('Isn\'t a number')
 		sys.exit(0)
-	agr = input('Please select 1 or 2:\n [1] lower case, upper case, special symbols, numbers\n [2] lower case, upper case, numbers\n')
+	agr = input('Please select 1 or 2:\n [1] lower case, upper case, numbers\n [2] lower case, upper case, numbers, special symbols\n')
 	try:
 		int(agr)
 	except:
