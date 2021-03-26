@@ -6,16 +6,19 @@ Super fast passwords generator
   ```r
   $ passgen -c 16 -l -s -u
   ```
-  flag -c to set password length to 16 characters
-  flag -l to use lowercase characters
-  flag -s to use special characters
-  flag -u to use uppercase characters
+  flags:
+
+      -c to set password length to 16 characters
+      -l to use lowercase characters
+      -s to use special characters
+      -u to use uppercase characters
 
   or you can just enter:
   ```r
   $ passgen
   ```
   this will use default settings:
+
     - 8 сharacters length password
     - use special characters
     - use lowercase characters
@@ -23,4 +26,4 @@ Super fast passwords generator
 
 ## Download
 
-  You can download a binary for all platfoms (OSX not supported) in release
+  You can [download](https://github.com/Out-Of-Mind/passgen/releases/tag/v.2.0) a binary for all platfoms (OSX not supported) in release
