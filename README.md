@@ -1,24 +1,26 @@
 # passgen
-generator passwords
+Super fast passwords generator
 
-Using:
+## Usage
 
-  in command line enter
   ```r
-  $ passgen -p 10 -lus
+  $ passgen -c 16 -l -s -u
   ```
-  -p means password
-  
-  10 means numbers of symbols in password
-  
-  -lus or -lu 
-  
-  l = lower case, u = upper case, s = special symbols
-  
-  u cannot choose use numbers or not
-  
-  also u can use it just enter 
+  flag -c to set password length to 16 characters
+  flag -l to use lowercase characters
+  flag -s to use special characters
+  flag -u to use uppercase characters
+
+  or you can just enter:
   ```r
   $ passgen
-  ``` 
-  in command line
+  ```
+  this will use default settings:
+    - 8 сharacters length password
+    - use special characters
+    - use lowercase characters
+    - use lowercase characters
+
+## Download
+
+  You can download a binary for all platfoms (OSX not supported) in release
