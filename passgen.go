@@ -6,11 +6,12 @@ import (
 	"time"
 	"strings"
 	"math/rand"
+	"github.com/atotto/clipboard"
 )
 
 var (
 	length, chars_length int
-	use_upper, use_low, use_special bool
+	use_upper, use_low, use_special, out_to_clipboard bool
 )
 
 const (
@@ -24,6 +25,7 @@ func init() {
 	flag.BoolVar(&use_low, "l", false, "usage: -l (to set use lowercase characters)")
 	flag.BoolVar(&use_upper, "u", false, "usage: -u (to set use uppercase characters)")
 	flag.BoolVar(&use_special, "s", false, "usage: -s (to set use special characters)")
+	flag.BoolVar(&out_to_clipboard, "clip", false, "usage: -clip (to send password to clipboard)")
 }
 
 func main() {
@@ -51,7 +53,7 @@ func main() {
 		chars_length += 16
 	}
 
-	password := make([]string, chars_length)
+	password := make([]string, length)
 	chars_arr := strings.Split(chars, "")
 
 	for i := 0; i < length; i++ {
@@ -59,5 +61,9 @@ func main() {
 		password[i] = chars_arr[n]
 	}
 	
-	fmt.Println("Your password is: "+strings.Join(password[:], ""))
+	if out_to_clipboard {
+		clipboard.WriteAll(strings.Join(password[:], ""))
+	} else {
+		fmt.Println("Your password is: "+strings.Join(password[:], ""))
+	}
 }
