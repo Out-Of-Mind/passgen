@@ -11,13 +11,14 @@ import (
 
 var (
 	length, chars_length int
-	use_upper, use_low, use_special, out_to_clipboard bool
+	use_upper, use_low, use_special, use_numbers, out_to_clipboard bool
 )
 
 const (
 	chars_low = "abcdefghijklmnopqrstuvwxyz"
 	chars_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	chars_special = "!#$%&*+-./:=?@^_"
+	numbers = "0123456789"
 )
 
 func init() {
@@ -25,6 +26,7 @@ func init() {
 	flag.BoolVar(&use_low, "l", false, "usage: -l (to set use lowercase characters)")
 	flag.BoolVar(&use_upper, "u", false, "usage: -u (to set use uppercase characters)")
 	flag.BoolVar(&use_special, "s", false, "usage: -s (to set use special characters)")
+	flag.BoolVar(&use_numbers, "n", false, "usage: -n (to set use numbers)")
 	flag.BoolVar(&out_to_clipboard, "clip", false, "usage: -clip (to send password to clipboard)")
 }
 
@@ -34,11 +36,12 @@ func main() {
 	var chars string
 	rand.Seed(time.Now().UnixNano())
 
-	if !use_low && !use_upper && !use_special {
-		chars_length = 68
+	if !use_low && !use_upper && !use_special && !use_numbers {
+		chars_length = 78
 		chars += chars_low
 		chars += chars_upper
 		chars += chars_special
+		chars += numbers
 	}
 	if use_low {
 		chars += chars_low
@@ -51,6 +54,10 @@ func main() {
 	if use_special {
 		chars += chars_special
 		chars_length += 16
+	}
+	if use_numbers {
+		chars += numbers
+		chars_length += 10
 	}
 
 	password := make([]string, length)
