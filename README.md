@@ -4,7 +4,7 @@ Super fast passwords generator
 ## Usage
 
   ```r
-  $ passgen -c 16 -l -s -u
+  $ passgen -c 16 -l -s -u -n
   ```
   flags:
 
