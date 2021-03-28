@@ -12,6 +12,8 @@ Super fast passwords generator
       -l to use lowercase characters
       -s to use special characters
       -u to use uppercase characters
+      -n to use numbers
+      -clip to send password in clipboard
 
   or you can just enter:
   ```r
@@ -23,6 +25,7 @@ Super fast passwords generator
     - use special characters
     - use lowercase characters
     - use lowercase characters
+    - use numbers
 
 ## Download
 
