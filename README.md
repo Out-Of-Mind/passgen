@@ -24,7 +24,7 @@ Super fast passwords generator
     - 8 сharacters length password
     - use special characters
     - use lowercase characters
-    - use lowercase characters
+    - use uppercase characters
     - use numbers
 
 ## Download
