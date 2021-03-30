@@ -24,9 +24,9 @@ Super fast passwords generator
     - 8 сharacters length password
     - use special characters
     - use lowercase characters
-    - use lowercase characters
+    - use uppercase characters
     - use numbers
 
 ## Download
 
-  You can [download](https://github.com/Out-Of-Mind/passgen/releases/tag/v.2.0) a binary for all platfoms (OSX not supported) in release
+  You can [download](https://github.com/Out-Of-Mind/passgen/releases/tag/v.2.1) a binary for all platfoms (OSX not supported, you could build it manually)
