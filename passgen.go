@@ -1,74 +1,78 @@
 package main
 
 import (
+	"os"
 	"fmt"
 	"flag"
-	"time"
 	"strings"
-	"math/rand"
+	"math/big"
+	"crypto/rand"
 	"github.com/atotto/clipboard"
 )
 
 var (
-	length, chars_length int
-	use_upper, use_low, use_special, use_numbers, out_to_clipboard bool
+	length, charsLength int
+	useUpper, useLow, useSpecial, useNumbers, outToClipboard bool
 )
 
 const (
-	chars_low = "abcdefghijklmnopqrstuvwxyz"
-	chars_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	chars_special = "!#$%&*+-./:=?@^_"
+	charsLow = "abcdefghijklmnopqrstuvwxyz"
+	charsUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	charsSpecial = "!#$%&*+-./:=?@^_"
 	numbers = "0123456789"
 )
 
 func init() {
 	flag.IntVar(&length, "c", 8, "usage: -c 16 (to set password length to 16)")
-	flag.BoolVar(&use_low, "l", false, "usage: -l (to set use lowercase characters)")
-	flag.BoolVar(&use_upper, "u", false, "usage: -u (to set use uppercase characters)")
-	flag.BoolVar(&use_special, "s", false, "usage: -s (to set use special characters)")
-	flag.BoolVar(&use_numbers, "n", false, "usage: -n (to set use numbers)")
-	flag.BoolVar(&out_to_clipboard, "clip", false, "usage: -clip (to send password to clipboard)")
+	flag.BoolVar(&useLow, "l", false, "usage: -l (to set use lowercase characters)")
+	flag.BoolVar(&useUpper, "u", false, "usage: -u (to set use uppercase characters)")
+	flag.BoolVar(&useSpecial, "s", false, "usage: -s (to set use special characters)")
+	flag.BoolVar(&useNumbers, "n", false, "usage: -n (to set use numbers)")
+	flag.BoolVar(&outToClipboard, "clip", false, "usage: -clip (to send password to clipboard)")
 }
 
 func main() {
 	flag.Parse()
 
 	var chars string
-	rand.Seed(time.Now().UnixNano())
 
-	if !use_low && !use_upper && !use_special && !use_numbers {
-		chars_length = 78
-		chars += chars_low
-		chars += chars_upper
-		chars += chars_special
+	if !useLow && !useUpper && !useSpecial && !useNumbers {
+		charsLength = 78
+		chars += charsLow
+		chars += charsUpper
+		chars += charsSpecial
 		chars += numbers
 	}
-	if use_low {
-		chars += chars_low
-		chars_length += 26
+	if useLow {
+		chars += charsLow
+		charsLength += 26
 	}
-	if use_upper {
-		chars += chars_upper
-		chars_length += 26
+	if useUpper {
+		chars += charsUpper
+		charsLength += 26
 	}
-	if use_special {
-		chars += chars_special
-		chars_length += 16
+	if useSpecial {
+		chars += charsSpecial
+		charsLength += 16
 	}
-	if use_numbers {
+	if useNumbers {
 		chars += numbers
-		chars_length += 10
+		charsLength += 10
 	}
 
 	password := make([]string, length)
-	chars_arr := strings.Split(chars, "")
+	charsArr := strings.Split(chars, "")
 
 	for i := 0; i < length; i++ {
-		n := rand.Intn(chars_length)
-		password[i] = chars_arr[n]
+		n, err := rand.Int(rand.Reader, big.NewInt(int64(charsLength)))
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+		password[i] = charsArr[n.Int64()]
 	}
 	
-	if out_to_clipboard {
+	if outToClipboard {
 		clipboard.WriteAll(strings.Join(password[:], ""))
 	} else {
 		fmt.Println("Your password is: "+strings.Join(password[:], ""))
