@@ -29,4 +29,4 @@ Super fast passwords generator
 
 ## Download
 
-  You can [download](https://github.com/Out-Of-Mind/passgen/releases/tag/v.2.1) a binary for all platfoms (OSX not supported, you could build it manually)
+  You can [download](https://github.com/Out-Of-Mind/passgen/releases/tag/v.2.2) a binary for all platfoms (OSX not supported, you could build it manually)
